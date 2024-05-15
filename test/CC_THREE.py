@@ -9,7 +9,7 @@ from CC_function_rule import Game , Player
 from CC_groupchat import CC_GroupChat, CC_GroupChatManager
 
 import openai
-openai.api_key = ' '
+openai.api_key = ' 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'
 
 
 config_list = config_list_from_json(
@@ -35,7 +35,7 @@ CC1 = CC1_AssistantAgent(
     name="CC1",
     role='CC1',
     llm_config=llm_config,
-    system_message="""Please play the role as a girl facing the dilemma, which is called "Mind_A". 
+    system_message="""Please play the role as the man facing the dilemma, which is called "Mind_A". 
     You should make decisions based on what is best for you, without regard for others' needs or feelings. 
     You obey rules only if established by more powerful individuals; you may disobey if they aren't likely to get caught. 
     "Wrong" behaviors are those that will be punished. You recognize that others also have needs. 
@@ -48,7 +48,7 @@ CC2 = CC2_AssistantAgent(
     name="CC2",
     role='CC2',    
     llm_config=llm_config,
-    system_message="""Please play the role as a girl facing the dilemma, which is called "Mind_B". 
+    system_message="""Please play the role as the man facing the dilemma, which is called "Mind_B". 
     You should make decisions based on what actions will please others, especially authority figures and other individuals with high status (e.g., teachers, popular peers). 
     You are concerned about maintaining relationships through sharing, trust, and loyalty, and you take other people's perspectives and intentions into account when making decisions. 
     You look to society as a whole for guidelines about right or wrong. 
@@ -61,7 +61,7 @@ CC3 = CC3_AssistantAgent(
     name="CC3",
     role='CC3',
     llm_config=llm_config,
-    system_message="""Please play the role as a girl facing the dilemma, which is called "Mind_C". 
+    system_message="""Please play the role as the man facing the dilemma, which is called "Mind_C". 
     You should recognize that rules represent agreements among many individuals about appropriate behavior. 
     Rules are seen as potentially useful mechanisms that can maintain the general social order and protect individual rights, rather than as absolute dictates that must be obeyed simply because they are "the law." 
     You also recognize the flexibility of rules; rules that no longer serve society's best interests can and should be changed. 
@@ -73,13 +73,13 @@ CC3 = CC3_AssistantAgent(
 user_proxy = CC_ProxyAgent(
     name="DM",
     role='DM',
-    system_message="Please play the role as a girl facing the dilemma, Now as a decision-maker, you need to consider all the different thinking modes mentioned above and give your final answer comprehensively.",
+    system_message="Please play the role as the man facing the dilemma, Now as a decision-maker, you need to consider all the different thinking modes mentioned above and give your final answer comprehensively.",
     code_execution_config={"last_n_messages": 2, "work_dir": "interactive_movie"},
     human_input_mode="ALWAYS"
 )
 
 
-storybase = " A boxing trainer, who is a long-time Catholic, has been asked by a female boxer to be her trainer. The man refuses. He has never taken a female boxer as his student. After several rejections, the man is touched and moved by the determination and persistence of the female boxer. He agrees to take on her as his trainer until she can find a replacement. Since then, the two have developed strong respect and bonding. The female boxer is able to win many matches too. In one important match, the female boxer has a major accident that results in paralyze from the neck down and needs life support to live. Heartbroken and desperate, the female boxer thanks the man for training her and helping her dream come true. She now has one last dream. She asks the trainer to help her die. Being a religious man, the man should not commit mercy killing. What will the trainer do? "
+storybase = " Two Asian kids are puppy love to each other. Before the girl leaves her hometown for another country, they date. Many years later, the two find each other on the internet. The woman marries a non-Asian New Yorker husband and settles in New York. She and her husband have lost enthusiasm. And after the man breaks up with his girlfriend, he comes to New York to reunite with his former love. Feeling a bit uneasy, they find there is still feeling and love tension between the two former lovers. In the dinner, the man asks the woman what would happen if she didn’t leave their hometown, and whether were they meant for each other in their past lives？What would the woman do? "
 #You three agents must reach a consensus within 10 rounds.
 #Option 3）Another creative choice 
 #Please give me a consistent result from your discussion, I don't want to see the choices being different.
@@ -88,11 +88,10 @@ Let's think step by step.
 Your final choice may be a compromise based on a richer understanding of the situation, but your choice must between these two choices. 
 Your ultimate goal is to reach an agreement, so you might need to make some compromises while maintaining your moral standards.
 Here are the possible options:
-
-Option 1) do 
-Option 2) don’t
+Option 1) Back and stay with her husband  
+Option 2) Leave the place with him
 Option 3）Another creative choice 
-
+Express their respective opinions based on their own moral principles. Try to convince others. Have a debate. Then reach agreement.
 What will you choose? {"Choice: ", "Reasoning: "}
 '''
 

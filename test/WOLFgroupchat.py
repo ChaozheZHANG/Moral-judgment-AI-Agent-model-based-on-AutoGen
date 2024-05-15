@@ -1,22 +1,21 @@
-# We add a new class CC_GroupChatManager to the autogen package
-#/Users/zhangchaozhe/Desktop/autogen/test/CC_groupchat.py
+
+#WOLFGroupChat.py
 from dataclasses import dataclass
 import sys
 from typing import Dict, List, Optional, Union
 from autogen.agentchat.agent import Agent
 from autogen.agentchat.conversable_agent import ConversableAgent
-from CC_function_rule import Game, Player
 
 from typing import Callable, Dict, Optional, Union
 from autogen.agentchat import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 from autogen.oai.openai_utils import config_list_from_json
 import openai
-openai.api_key = ' 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'
+openai.api_key = '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'
 
 
 
 @dataclass
-class CC_GroupChat:
+class WOLFGroupChat:
     """A group chat class that contains a list of agents and the maximum number of rounds."""
 
     agents: List[Agent]
@@ -39,20 +38,14 @@ class CC_GroupChat:
     def reset(self):
         """Reset the group chat."""
         self.messages.clear()
-
-    def is_over(self):
-        return len(self.messages) >= self.max_round
     
+    #加一行
     def add_message(self, message):
         if message["role"] == "system":
             self.add_system_message(message["content"])
         else:
             self.add_agent_message(message["name"], message["content"])
-            # 检查是否有代理说“over”
-            if message["content"] == "over":
-                return True
-        return False
-    
+    #加一行
     def add_system_message(self, content):
         self.system_events.append({"type": "message", "content": content})
 
@@ -96,7 +89,7 @@ Then select the next role from {self.agent_names} to play. Only return the role.
         return "\n".join([f"{agent.name}: {agent.system_message}" for agent in self.agents])
 
 
-class CC_GroupChatManager(ConversableAgent):
+class WOLFGroupChatManager(ConversableAgent):
     """(In preview) A chat manager agent that can manage a group chat of multiple agents."""
 
     def __init__(self, groupchat: GroupChat, name: Optional[str] = "chat_manager",
@@ -127,9 +120,6 @@ class CC_GroupChatManager(ConversableAgent):
             # set the name to speaker's name if the role is not function
             if message["role"] != "function":
                 message["name"] = speaker.name
-            if groupchat.is_over():
-                break
-            #######
             groupchat.messages.append(message)
             self.conversation.append(message)  # Add this line to add the message to the conversation
             # broadcast the message to all agents except the speaker
@@ -158,10 +148,4 @@ class CC_GroupChatManager(ConversableAgent):
             # The speaker sends the message without requesting a reply
             speaker.send(reply, self, request_reply=False)
             message = self.last_message(speaker)
-        
-        if groupchat.messages[-1]["content"] == "over":
-            for agent in groupchat.agents:
-                if isinstance(agent, Player):
-                    print(f"{agent.name}'s final decision is {agent.make_final_decision()}")
-
         return True, None
