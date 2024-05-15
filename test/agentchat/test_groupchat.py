@@ -1,6 +1,5 @@
 import autogen
 
-
 def test_chat_manager():
     agent1 = autogen.ConversableAgent(
         "alice",

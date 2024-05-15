@@ -121,7 +121,7 @@ def config_list_openai_aoai(
             # Assuming OpenAI API_KEY in os.environ["OPENAI_API_KEY"]
             api_keys=os.environ.get("OPENAI_API_KEY", "").split("\n"),
             # "api_type": "open_ai",
-            # "api_base": "https://api.openai.com/v1",
+            # "api_base": "https://api.openai-proxy.com/v1",
         )
         if exclude != "openai"
         else []

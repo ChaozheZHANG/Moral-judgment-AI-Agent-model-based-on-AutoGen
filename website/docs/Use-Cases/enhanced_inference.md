@@ -145,7 +145,7 @@ response = autogen.Completion.create(
             "model": "gpt-3.5-turbo",
             "api_key": os.environ.get("OPENAI_API_KEY"),
             "api_type": "open_ai",
-            "api_base": "https://api.openai.com/v1",
+            "api_base": "https://api.openai-proxy.com/v1",
             "api_version": None,
         },
         {
