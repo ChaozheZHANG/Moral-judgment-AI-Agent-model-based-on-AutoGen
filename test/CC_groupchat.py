@@ -11,7 +11,7 @@ from typing import Callable, Dict, Optional, Union
 from autogen.agentchat import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 from autogen.oai.openai_utils import config_list_from_json
 import openai
-openai.api_key = ' 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'
+openai.api_key = ''
 
 
 

@@ -4,7 +4,7 @@ from autogen.agentchat.conversable_agent import ConversableAgent
 
 
 import openai
-openai.api_key = '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'
+openai.api_key = ''
 
 config_list = config_list_from_json(
     "OAI_CONFIG_LIST",

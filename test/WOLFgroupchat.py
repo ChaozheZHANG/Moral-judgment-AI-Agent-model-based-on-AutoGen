@@ -10,7 +10,7 @@ from typing import Callable, Dict, Optional, Union
 from autogen.agentchat import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 from autogen.oai.openai_utils import config_list_from_json
 import openai
-openai.api_key = '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'
+openai.api_key = ''
 
 
 

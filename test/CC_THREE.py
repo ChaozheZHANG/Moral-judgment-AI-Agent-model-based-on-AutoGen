@@ -9,7 +9,7 @@ from CC_function_rule import Game , Player
 from CC_groupchat import CC_GroupChat, CC_GroupChatManager
 
 import openai
-openai.api_key = ' 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'
+openai.api_key = ''
 
 
 config_list = config_list_from_json(

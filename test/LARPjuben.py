@@ -2,7 +2,7 @@ from autogen.agentchat import AssistantAgent, UserProxyAgent, GroupChat, GroupCh
 from autogen.oai.openai_utils import config_list_from_json
 
 import openai
-openai.api_key = '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'
+openai.api_key = ''
 
 config_list = config_list_from_json(
     "OAI_CONFIG_LIST",
